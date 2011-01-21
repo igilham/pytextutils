@@ -1,3 +1,5 @@
 pytextutils is the beginning of a small collection of simple text utilities in Python.
 
 It was thrown together as a fun learning project for the author.
+
+Since there can be some politics around releasing code to the public domain, I've placed it under the simplified 2-clause BSD license.
