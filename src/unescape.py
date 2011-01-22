@@ -8,6 +8,9 @@ def unescape_file(path):
 	unicode string containing the correct unicode representation of the 
 	contents
 	
+	Note: this simple implementation will probably not scale to very large
+	files
+	
 	"""
 	try:
 		f = open(path, 'r')
@@ -28,7 +31,6 @@ def unescape_str(s):
 
 
 def main(args):
-	'entry point'
 	for arg in args:
 		s = unescape_file(arg)
 		try:
