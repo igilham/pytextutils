@@ -1,17 +1,36 @@
 #!/usr/bin/env python
 import sys
 
-def unescape(s):
+def unescape_file(path):
+	r"""Returns the unicode-unescaped string representing the content of a file
+	
+	Reads a file containing unicode escape sequences (\uXXXX) returns a 
+	unicode string containing the correct unicode representation of the 
+	contents
+	
+	"""
+	try:
+		f = open(path, 'r')
+		s = f.read()
+	finally:
+		f.close()
+	return unescape_str(s)
+
+
+def unescape_str(s):
+	r"""Returns the unicode-unescaped but otherwise unmodified input string
+	
+	Re-encodes a string to replace unicode escape sequences (\uXXXX) with
+	their unicode equivalents
+	
+	"""
 	return s.encode('utf-8').decode('unicode-escape')
 
+
 def main(args):
+	'entry point'
 	for arg in args:
-		try:
-			infile = open(arg, 'r')
-			s = infile.read()
-		finally:
-			infile.close()
-		s = unescape(s)
+		s = unescape_file(arg)
 		try:
 			outfile = open(arg + '.unescaped', 'w', encoding='utf-8')
 			outfile.write(s)
@@ -19,6 +38,7 @@ def main(args):
 			outfile.close()
 		return True
 
+
 if __name__ == '__main__':
-	sys.exit(main(sys.argv[1:]))
+	main(sys.argv[1:])
 
