@@ -36,8 +36,6 @@ def main(args):
 		with open(arg + '.unescaped', 'w', encoding='utf-8') as outfile:
 			outfile.write(s)
 
-		return True
-
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
