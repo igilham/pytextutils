@@ -33,12 +33,8 @@ def unescape_str(s):
 def main(args):
 	for arg in args:
 		s = unescape_file(arg)
-		try:
-			outfile = open(arg + '.unescaped', 'w', encoding='utf-8')
+		with open(arg + '.unescaped', 'w', encoding='utf-8') as outfile:
 			outfile.write(s)
-		finally:
-			outfile.close()
-		return True
 
 
 if __name__ == '__main__':

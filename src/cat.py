@@ -2,7 +2,7 @@ import fileinput
 import sys
 
 def _simple_cat():
-	"""Cannonical implementation that doesn't work like UNIX cat for stdin"""
+	"""Cannonical implementation that doesn't work like UNIX cat for stdin (not used)"""
 	for line in fileinput.input():
 		sys.stdout.write(line)
 
@@ -15,11 +15,9 @@ def cat(paths):
 	
 	"""
 	for path in paths:
-		try:
-			fd = open(path, 'r')
+		with open(path, 'r') as fd:
 			sys.stdout.write(fd.read())
-		finally:
-			fd.close()
+
 
 def stdincat():
 	"""Writes stdin to std out one line at a time"""
