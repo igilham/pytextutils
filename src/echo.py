@@ -12,9 +12,8 @@ def main():
 	options, args = getopt.getopt(sys.argv[1:], 'n')
 	
 	newline = '\n'
-	for opt in options:
-		if opt == '-n':
-			newline = ''
+	if '-n' in options:
+		newline = ''
 	for arg in args:
 		print(arg, end=newline)
 
