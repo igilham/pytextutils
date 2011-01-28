@@ -12,11 +12,8 @@ def unescape_file(path):
 	files
 	
 	"""
-	try:
-		f = open(path, 'r')
-		s = f.read()
-	finally:
-		f.close()
+	with open(path, 'r') as fd:
+		s = fd.read()
 	return unescape_str(s)
 
 
